@@ -10,53 +10,52 @@
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
+	
+	%refer the notaability hints about writing a paper
+	% describe the protocol for control access (blockchain part)
+	%  Related work
+	%	-   traditional architectures commenly employed in the IoT access:
+	%	   XACML, OAuth, UMA
+	%	   Dependency of a central entity
+	
+	% Our contribution should focus on the interoperability on the shared data, can be solved by BX view-update solution
+	% 只是把receipt放在blockchain上（大家一起监督并达成一致性）
+	%data放在自己出
+	%dejima作为virtual，需要时产生
+	
+	%医生可以给病人提问题，然后病人回答，记录，因此data需要更新
+	
+	%优化access verification的措施 解决new authorization latency （like call-by-need)
+	
+	% 一旦一个新的node想发起访问，需要验证他的身份。
+	% 但是一旦验证通过了之后，这个节点就被加入共享数据的白名单上，
+	% 以后访问就不需要再验证了（即每次验证的时候先看whitelist上有没有这个用户，如果有，则直接有，则直接授权；否则需要大家完整验证）
+	
+	
+	% describe the protocol for BX update procedure part
 
-\title{Paper Titleer*\\
-{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
-should not be used}
-\thanks{Identify applicable funding agency here. If none, delete this.}
-}
+\title{Paper Title}
 
 \author{\IEEEauthorblockN{Chunmiao Li}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address}
+\IEEEauthorblockA{Department of Informatics, SOKENDAI \\
+	(Also, National Institute of Informatics) \\
+chunmiaoli1993@nii.ac.jp}
 \and
-\IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address}
+\IEEEauthorblockN{Yang Cao}
+\IEEEauthorblockA{Department of Social Informatics, Kyoto University \\
+yang@i.kyoto-u.ac.jp}
 \and
-\IEEEauthorblockN{3\textsuperscript{rd} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address}
+\IEEEauthorblockN{Zhenjiang Hu}
+\IEEEauthorblockA{ Department of Informatics, SOKENDAI \\
+	(Also, National Institute of Informatics) \\
+hu@nii.ac.jp}
 \and
-\IEEEauthorblockN{4\textsuperscript{th} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address}
-\and
-\IEEEauthorblockN{5\textsuperscript{th} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address}
-\and
-\IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address}
+\IEEEauthorblockN{Masatoshi Yoshikawa}
+\IEEEauthorblockA{Department of Social Informatics, Kyoto University\\
+yoshikawa@i.kyoto-u.ac.jp}
 }
 
 \maketitle
-
-%refer the notaability hints about writing a paper
 
 \begin{abstract}
 This document is a model and instructions for \LaTeX.
@@ -248,31 +247,13 @@ quantities and units. For example, write ``Temperature (K)'', not
 
 \section*{Acknowledgment}
 
+Thanks for the suggestions from Josh Ko.
+
 The preferred spelling of the word ``acknowledgment'' in America is without 
 an ``e'' after the ``g''. Avoid the stilted expression ``one of us (R. B. 
 G.) thanks $\ldots$''. Instead, try ``R. B. G. thanks$\ldots$''. Put sponsor 
 acknowledgments in the unnumbered footnote on the first page.
 
-\section*{References}
-
-Please number citations consecutively within brackets \cite{b1}. The 
-sentence punctuation follows the bracket \cite{b2}. Refer simply to the reference 
-number, as in \cite{b3}---do not use ``Ref. \cite{b3}'' or ``reference \cite{b3}'' except at 
-the beginning of a sentence: ``Reference \cite{b3} was the first $\ldots$''
-
-Number footnotes separately in superscripts. Place the actual footnote at 
-the bottom of the column in which it was cited. Do not put footnotes in the 
-abstract or reference list. Use letters for table footnotes.
-
-Unless there are six authors or more give all authors' names; do not use 
-``et al.''. Papers that have not been published, even if they have been 
-submitted for publication, should be cited as ``unpublished'' \cite{b4}. Papers 
-that have been accepted for publication should be cited as ``in press'' \cite{b5}. 
-Capitalize only the first word in a paper title, except for proper nouns and 
-element symbols.
-
-For papers published in translation journals, please give the English 
-citation first, followed by the original foreign-language citation \cite{b6}.
 
 \begin{thebibliography}{00}
 \bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
@@ -283,8 +264,5 @@ citation first, followed by the original foreign-language citation \cite{b6}.
 \bibitem{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
 \bibitem{b7} M. Young, The Technical Writer's Handbook. Mill Valley, CA: University Science, 1989.
 \end{thebibliography}
-\vspace{12pt}
-\color{red}
-IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
 
 \end{document}
