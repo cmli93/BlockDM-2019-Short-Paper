@@ -27,27 +27,54 @@ H.~Centers~for Medicare \& Medicaid~Services \emph{et~al.}, ``Hipaa
   care providers. final rule.'' \emph{Federal register}, vol.~69, no.~15, p.
   3433, 2004.
 
-\bibitem{mandl2001public}
-K.~D. Mandl, D.~Markwell, R.~MacDonald, P.~Szolovits, and I.~S. Kohane,
-  ``Public standards and patients' control: how to keep electronic medical
-  records accessible but privatemedical information: access and
-  privacydoctrines for developing electronic medical recordsdesirable
-  characteristics of electronic medical recordschallenges and limitations for
-  electronic medical recordsconclusionscommentary: Open approaches to
-  electronic patient recordscommentary: A patient's viewpoint,'' \emph{Bmj},
-  vol. 322, no. 7281, pp. 283--287, 2001.
+\bibitem{zhang2016secure}
+J.~Zhang, N.~Xue, and X.~Huang, ``A secure system for pervasive social
+  network-based healthcare,'' \emph{IEEE Access}, vol.~4, pp. 9239--9250, 2016.
+
+\bibitem{zolnierek2009physician}
+K.~B.~H. Zolnierek and M.~R. DiMatteo, ``Physician communication and patient
+  adherence to treatment: a meta-analysis,'' \emph{Medical care}, vol.~47,
+  no.~8, p. 826, 2009.
+
+\bibitem{street2009does}
+R.~L. Street~Jr, G.~Makoul, N.~K. Arora, and R.~M. Epstein, ``How does
+  communication heal? pathways linking clinician--patient communication to
+  health outcomes,'' \emph{Patient education and counseling}, vol.~74, no.~3,
+  pp. 295--301, 2009.
+
+\bibitem{fitzpatrick2013review}
+G.~Fitzpatrick and G.~Ellingsen, ``A review of 25 years of cscw research in
+  healthcare: contributions, challenges and future agendas,'' \emph{Computer
+  Supported Cooperative Work (CSCW)}, vol.~22, no. 4-6, pp. 609--665, 2013.
 
 \bibitem{office2015report}
 O.~of~the National Coordinator~for Health Information~Technology, ``Report to
   congress: Report on health information blocking,'' 2015.
 
-\bibitem{zyskind2015decentralizing}
-G.~Zyskind, O.~Nathan \emph{et~al.}, ``Decentralizing privacy: Using blockchain
-  to protect personal data,'' in \emph{Security and Privacy Workshops (SPW),
-  2015 IEEE}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2015, pp. 180--184.
+\bibitem{azaria2016medrec}
+A.~Azaria, A.~Ekblaw, T.~Vieira, and A.~Lippman, ``Medrec: Using blockchain for
+  medical data access and permission management,'' in \emph{Open and Big Data
+  (OBD), International Conference on}.\hskip 1em plus 0.5em minus 0.4em\relax
+  IEEE, 2016, pp. 25--30.
+
+\bibitem{fan2018medblock}
+K.~Fan, S.~Wang, Y.~Ren, H.~Li, and Y.~Yang, ``Medblock: Efficient and secure
+  medical data sharing via blockchain,'' \emph{Journal of medical systems},
+  vol.~42, no.~8, p. 136, 2018.
+
+\bibitem{xia2017bbds}
+Q.~Xia, E.~B. Sifah, A.~Smahi, S.~Amofa, and X.~Zhang, ``Bbds: Blockchain-based
+  data sharing for electronic medical records in cloud environments,''
+  \emph{Information}, vol.~8, no.~2, p.~44, 2017.
 
 \bibitem{nakamoto2008bitcoin}
 S.~Nakamoto, ``Bitcoin: A peer-to-peer electronic cash system,'' 2008.
+
+\bibitem{dubovitskaya2017secure}
+A.~Dubovitskaya, Z.~Xu, S.~Ryu, M.~Schumacher, and F.~Wang, ``Secure and
+  trustable electronic medical records sharing using blockchain,'' in
+  \emph{AMIA Annual Symposium Proceedings}, vol. 2017.\hskip 1em plus 0.5em
+  minus 0.4em\relax American Medical Informatics Association, 2017, p. 650.
 
 \bibitem{wood2014ethereum}
 G.~Wood, ``Ethereum: A secure decentralised generalised transaction ledger.''
@@ -84,16 +111,29 @@ H.-S. Ko, T.~Zan, and Z.~Hu, ``{BiGUL}: A formally verified core language for
   \url{http://doi.acm.org/10.1145/2847538.2847544}
 \BIBentrySTDinterwordspacing
 
+\bibitem{chung2018using}
+C.-F. Chung, ``Using personal informatics data in collaboration among people
+  with different expertise,'' Ph.D. dissertation, 2018.
+
+\bibitem{huet2004coq}
+G.~Huet, G.~Kahn, and C.~Paulin-Mohring, ``The coq proof assistant a
+  tutorial,'' \emph{Rapport Technique}, vol. 178, 2004.
+
+\bibitem{dagher2018ancile}
+G.~G. Dagher, J.~Mohler, M.~Milojkovic, and P.~B. Marella, ``Ancile:
+  Privacy-preserving framework for access control and interoperability of
+  electronic health records using blockchain technology,'' \emph{Sustainable
+  Cities and Society}, vol.~39, pp. 283--297, 2018.
+
+\bibitem{zyskind2015decentralizing}
+G.~Zyskind, O.~Nathan \emph{et~al.}, ``Decentralizing privacy: Using blockchain
+  to protect personal data,'' in \emph{Security and Privacy Workshops (SPW),
+  2015 IEEE}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2015, pp. 180--184.
+
 \bibitem{yue2016healthcare}
 X.~Yue, H.~Wang, D.~Jin, M.~Li, and W.~Jiang, ``Healthcare data gateways: found
   healthcare intelligence on blockchain with novel privacy risk control,''
   \emph{Journal of medical systems}, vol.~40, no.~10, p. 218, 2016.
-
-\bibitem{azaria2016medrec}
-A.~Azaria, A.~Ekblaw, T.~Vieira, and A.~Lippman, ``Medrec: Using blockchain for
-  medical data access and permission management,'' in \emph{Open and Big Data
-  (OBD), International Conference on}.\hskip 1em plus 0.5em minus 0.4em\relax
-  IEEE, 2016, pp. 25--30.
 
 \bibitem{us2017individuals}
 U.~D. of~Health, H.~Services \emph{et~al.}, ``Individuals’ right under hipaa
@@ -103,5 +143,20 @@ U.~D. of~Health, H.~Services \emph{et~al.}, ``Individuals’ right under hipaa
 C.~Grossman, W.~A. Goolsby, L.~Olsen, and J.~M. McGinnis, ``Clinical data as
   the basic staple of health learning: creating and protecting a public good,''
   \emph{Washington, DC: Institute of Medicine}, 2011.
+
+\bibitem{hyperledger2017hyperledger}
+Hyperledger, ``Hyperledger,'' 2017.
+
+\bibitem{liu2018bpds}
+J.~Liu, X.~Li, L.~Ye, H.~Zhang, X.~Du, and M.~Guizani, ``Bpds: A blockchain
+  based privacy-preserving data sharing for electronic medical records,''
+  \emph{arXiv preprint arXiv:1811.03223}, 2018.
+
+\bibitem{amofa2018blockchain}
+S.~Amofa, E.~B. Sifah, O.-B. Kwame, S.~Abla, Q.~Xia, J.~C. Gee, and J.~Gao, ``A
+  blockchain-based architecture framework for secure sharing of personal health
+  data,'' in \emph{2018 IEEE 20th International Conference on e-Health
+  Networking, Applications and Services (Healthcom)}.\hskip 1em plus 0.5em
+  minus 0.4em\relax IEEE, 2018, pp. 1--6.
 
 \end{thebibliography}

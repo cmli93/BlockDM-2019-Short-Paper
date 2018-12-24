@@ -14,8 +14,6 @@
 	
 	%refer the presentations/ notaability hints about writing a paper
 	
-	
-	
 	% describe the protocol for control access (blockchain part)
 	%  Related work
 	%	-   traditional architectures commenly employed in the IoT access:
@@ -23,20 +21,17 @@
 	%	   Dependency of a central entity
 	
 	% Our contribution should focus on the interoperability on the shared data, can be solved by BX view-update solution
-	% 只是把receipt放在blockchain上（大家一起监督并达成一致性）
-	%data放在自己出
-	%dejima作为virtual，需要时产生
+	% ???receipt??blockchain???????????????
+	%data?????
+	%dejima??virtual??????
 	
-	%医生可以给病人提问题，然后病人回答，记录，因此data需要更新
+	%???????????????????????data????
 	
-	%优化access verification的措施 解决new authorization latency （like call-by-need)
+	%??access verification??? ??new authorization latency ?like call-by-need)
 	
-	% 一旦一个新的node想发起访问，需要验证他的身份。
-	% 但是一旦验证通过了之后，这个节点就被加入共享数据的白名单上，
-	% 以后访问就不需要再验证了（即每次验证的时候先看whitelist上有没有这个用户，如果有，则直接有，则直接授权；否则需要大家完整验证）
-	
-	
-	% describe the protocol for BX update procedure part
+	% ??????node???????????????
+	% ??????????????????????????????
+	% ???????????????????????whitelist???????????????????????????????????
 
 \title{Authorized Updates to Distributed Medical Data}
 
@@ -66,12 +61,12 @@
 
 \maketitle
 
-%规范下a, the, an 的使用
+%???a, the, an ???
 \begin{abstract}
 
 % From MedRec: (our target problem)
-% We recognize  that not all provider records can or should be made available to  patients (i.e. psychotherapy notes, or physician intellectual property) [6], and thus MedRec does not presume to be an automatic content-management system for all of a Physician's output. 我们更重要的是提出shared data和local data之间存在一致性关系
-%MedRec does not claim to address the security of individual provider  databases where the record content is stored. （=> shared 部分也在其他peers中存一份） This must still be managed  by the local IT admin. Nor does MedRec attempt to solve the Digital  Rights Management problem. （data provider can 定制共享的数据 as view)
+% We recognize  that not all provider records can or should be made available to  patients (i.e. psychotherapy notes, or physician intellectual property) [6], and thus MedRec does not presume to be an automatic content-management system for all of a Physician's output. ?????????shared data?local data?????????
+%MedRec does not claim to address the security of individual provider  databases where the record content is stored. ?=> shared ??????peers????? This must still be managed  by the local IT admin. Nor does MedRec attempt to solve the Digital  Rights Management problem. ?data provider can ??????? as view)
 
 \end{abstract}
 
@@ -79,84 +74,40 @@
 medical data, authorization, update
 \end{IEEEkeywords}
 
-
-%列一个文章每一部分怎么写的框架，参考论文写作课
-
 \section{Introduction}
 
-"Through the HIPAA Privacy Rule, providers can take
-up to 60 days to respond (not necessarily to comply) to a request for updating or removing a record that
-was erroneously added" \cite{centers2004hipaa}. 
+Now a lot of medical data are digitalized so as to be stored and accessed conveniently. A medical record is produced after a patient go to see doctor and often resides on the hospital's database. Medical records contain highly sensitive information about patient privacy. HIPPA Privacy Rule  \cite{centers2004hipaa} in the U.S. regulates the use and disclosure of personally identifiable health information to protect patients' privacy. However, it hard to make sure that all medical institutes would follow these rules and they may expose patient privacy deliberately or for profit. Moreover, a patient might visit many hospitals and leave his records scattered \cite{zhang2016secure} in different places, which make it is hard for he to manage his records efficiently. So patient should be provided a platform to manage and review his historical medical data in case of exposure or being tampered. Better communication between patients and doctors can contribute to patient adherence \cite{zolnierek2009physician} and  improved health \cite{street2009does}. In addition to provide data to doctor, patients tend to share their medical data with health experts to help understand some statistics. Many researches has been done to study how medical specialists with different expertise collaborate with each other \cite{fitzpatrick2013review}.  Researchers can identify public hearth risks and then develop a better treatments by analyzing existing medical data \cite{office2015report}. As presented in \cite{chung2018using},  patients and experts can exchange information to develop better plans to satisfy individual routines. Sharing medical data under some constraints could benefit all relating stakeholders such as patients, researchers and doctors. 
+% %??????????????/??????????????????
+% %?????????????????????revise treatment plan
+% %???????????????????????????????????????
 
-"Interoperability challenges between different provider and hospital systems pose additional
-barriers to effective data sharing. This lack of coordinated data management and exchange means health records are fragmented, rather than cohesive" \cite{mandl2001public}
+To be shared by multiple parties, shared medical data could reside in encrypted format on the trusted cloud. Only authorized stakeholders can access the shared data. Centralized access control might lead to single point of failure and become the bottleneck of sharing system. Some medical data sharing systems \cite{azaria2016medrec,fan2018medblock,xia2017bbds} are proposed to manage authentication based on blockchain\cite{nakamoto2008bitcoin} technology. Being a immutable shared ledger, blockchain can achieve consensus among distributed nodes via proof of work. Encoding the access control logic of medical data into smart contracts\cite{azaria2016medrec} or Chaincode \cite{dubovitskaya2017secure} can prevent unauthorized party to access medical data, which will guarantee data security. Anyone who want to access medical data should be verified permission from blockchain side and their access process will be recorded on blockchain.
 
-"Patients benefit from a holistic, transparent picture of their medical history. In the age of online banking and social media, patients are increasingly willing, able and desirous of managing their data on the web and on the go [3]."\cite{mandl2001public}
+However, generally different stakeholders may have different focus on the same medical records. For example, doctors might be more concerned with the clinical data and researchers are interested in mechanism of action, whereas patients care more about the medicine dosage standard. To reduce the size of shared data to improve access efficiency and avoid additional data interference, the complete medical data (data source) might be split into lots of smaller data pieces (data views) which are shared by different parties. Each view can be regenerated from the source. Source and view should satisfy predefined consistency relationship. Different views from one source might have overlapped data. Moreover, each party will have a local complete data and different data pieces to share with others. In this way, shared data are distributed among sharing parties.
 
-"The ONC's report emphasizes that biomedical and public health researchers “require the ability to analyze information from many sources in order to identify public health risks, develop new treatments and cures, and enable precision medicine” \cite{office2015report}.
+Not only limited to access data, patients or doctors may want to update existing shared data. Although some works \cite{azaria2016medrec} claimed to allow updates on shared medical data, they did not propose any concrete scheme to implement updates and show how to synchronize all sharing parties to keep them still have same shared data after updates.
 
-"We build on the work of Zyskind et al. \cite{zyskind2015decentralizing} to assemble references to data and encode these as hashed pointers onto a blockchain ledger. We then organize these references to explicitly create an accessible bread crumb trail for medical history, without storing raw medical data on the blockchain. " Our solution encodes the sharing peers in blockchain ledger and don't store the hash pointer to the raw data on ledger so that won't expose the privacy.
+%But how about read, add, delete shared data?
+%Since the shared data just reside in each peer's local database, read the shared data is easily promised.
+In this paper, we aim to solve authorized updates issues on distributed shared medical data as stated above. 
+%for updates distributed shared medical data
+Each participant may have multiple shared data with different peers and keep this shared ones consistent with local complete database. Bidirectional transformations \cite{hu2014validity} (BXs hereafter) can help synchronize them after updates on either one side. For example, we can use \emph{put} function in BX to reflect modifications on shared data to complete data and \emph{get} to reproduce shared data from complete data. 
+%For authorization
+Moreover,  any operations on the shared data should be conducted after the peer has been authorized. Any modifications on the existing shared data should be updated to all sharing peers immediately. We encodes the sharing peers not pointers to the raw data into smart contracts in case of private data leakage. Each sharing peer will receive the notification from smart contracts after an update on shared data are verified. Then each peer will request the newest data from updater and then use it to update his local complete data. Smart contracts will refuse any further operations on shared data before all sharing peers have pulled the newest data to their local database.
 
-bidirectional transformation (BX hereafter)
+Our contribution are as follow.
+\begin{enumerate}
+	\item We surveyed existing blockchain-based solutions and clarify their disadvantages, which are presented in Section \ref{related work};
+	\item We designed  a decentralized medical data sharing architecture where data reside on owner's local database and metadata are stored on smart contract of  blockchain.
+	\item We proposed that the consistency relationship between local complete data and shared data and apply BX to keep consistency after updates;
+	\item We discussed the essential components needed for medical data sharing and proposed our solution to build a holistic solution utilizing blockchain to control updates permission.
+	
+\end{enumerate}
 
-We aims to solve problem update shared data between different peers. Since the shared data just reside in each peer's local database, read the shared data is easily promised.
-
-But how about add, delete shared data?
-
-We use two techniques to  solve a problem where blockchain is used to prevent malicious party to operate the 
-
-
-
-
-%
-%“Participants and health experts can then focus on individual health goals and questions, exchange knowledge to support individualized diagnoses and recommendations, and develop actionable and feasible plans to accommodate individual routines.
-%
-%Many clinics have begun to encourage patients to self-collect data that is traditionally collected by medical professionals, with the expectation of increasing clinic efficiency and promoting patient awareness.
-%
-%One example is the proliferation of self-service blood pressure kiosks. In a longitudinal, mixed-method study, I partnered with medical researchers to examine the adoption of self-service blood pressure kiosks in a family medicine clinic. Because of initial concerns raised by patients, staff, and clinicians, the clinic iteratively identified and addressed emerging challenges, provided timely solutions, and improved the overall workflow integration. 
-%
-%This work also provides a foundation for future researchers to study how personal informatics data can support management of other chronic diseases or preventive care, as well as how people with different expertise interact, communicate, and collaborate with each other.
-% ”
-% %分析师对数据的解释不就是修改/给医生提供的数据的解释和建议就是修改
-% %医生可以根据病人的状况对药物信息作出调整，revise treatment plan
-% %病人可以在共享的信息下查看解释后的记录，并且根据自己的状况更新健康数据给医生看
-%
-
-%Advantages of Medical data sharing
-%
-%However, health data are often sensitive and private and should be accessed under the permission of data owner.
-%
-%
-%\textbf{The essentiality of update on sharing data.}
-%
-%According to the U.S. national health information privacy standards \cite{centers2003hipaa}, identifiable health information should not be exposed or just be accessed under the permission of patient or for public health practice.
-%
-%There are some requirements for medical data sharing:
-%
-%\begin{itemize}
-%	\item Any operations on the shared data should be conducted after authorized (under the permission of patients).
-%	\item Any modifications on the existing shared data should be updated to all sharing peers immediately.
-%	\item Any access on medical data should be recorded.
-%\end{itemize}
-%
-%Our contribution are as follow.
-%
-%\begin{enumerate}
-%
-%	\item  We identified the problems in medical data sharing (eg data privacy, transparency, lack of interoperability…) %我们识别出了共享数据和本地总数据之间的一致性关系
-%	
-%	\item  We surveyed existing blockchain-based solutions (eg. the three works you presented to us in the meeting) and clarify their disadvantages
-%	
-%	\item We discussed the essential components needed for medical data sharing  (but not been well studied in the literature )  and proposed our (visioned) solution to build a holistic solution utilizing blockchain.
-%	
-%	\item We proposed a decentralized medical data sharing architecture where data reside on owner's local database and metadata are stored on smart contract of  blockchain.
-%	
-%	
-%	
-%	
-%\end{enumerate}
+The remainder are organized like this. Section \ref{preli} gives some preliminaries about blockchain and bidirectional transformations. Section \ref{system} sketches our system architecture and provides a case analysis. Section \ref{discuss} discusses more details about our contributions and propose countermeasures against identified threats to our system. Section \ref{related work} compared our work with existing ones to clarify our improvement over them. Section \ref{conclude} concludes and directs our future work.
 
 \section{Preliminary}
+\label{preli}
 
 	\subsection{Blockchain}
 	Proposed with Bitcoin \cite{nakamoto2008bitcoin} in 2008, blockchain technology has been widely used in many fields. Blockchain provides a solution for data storage, data transfer and consensus protocol in a distributed and decentralized environment. Generally speaking, blockchain is a shared ledger and replicated by all nodes on a distributed network, which records the historical valid transactions in a chronologically chained blocks. The nodes who generate new blocks via a proof-of-work are called miners.
@@ -164,14 +115,21 @@ We use two techniques to  solve a problem where blockchain is used to prevent ma
 	Not only can support the platform of cryptocurrency, blockchain can also be applied to other scenes. Ethereum \cite{wood2014ethereum} extend blockchain with additions such as a built-in Turing-complete programming language so that one can use this scripts (i.e., Ethereum Virtual Machine (EVM) byte codes) to write programs (i.e., smart contracts \footnote{Hyperledger and others still provide platforms to write smart contracts.}) on blockchain. We can just write Solidity \footnote{https://solidity.readthedocs.io/en/v0.5.2/} programs and then it can be compiled to EVM code. Besides the user accounts controlled by private keys like in Bitcoin, the accounts for smart contracts are allowed in Ethereum. Anyone can build decentralized applications which consists of a collection of smart contracts. Once a transaction involving smart contract creation gets confirmed, an address is generated for the contract and later anyone can send transactions to this address for executing the logic on it. A smart contract transaction is enforced when a miner includes it in a new produced block. Other nodes will validate it and re-run contracts if it is valid.
 	
 	\subsection{Bidirectional transformation}
-	The theory of BXs was proposed to synchronize two parts of related information (i.e., source and view).  A BX consists of a pair of forward and backward transformations. A forward transformation (denoted as \emph{get}) extracts elements from the source to build an abstract view, and the backward transformation (denoted as \emph{put}\footnote{\emph{put} is not a simple inverse of \emph{get}. Instead, it accepts the view and the original source as input and produces an updated source as output.}) embeds information of the view back into the source and produces an updated source. This pair of transformations should satisfy the {\em round-tripping} laws (i.e., {\em well-behaveness}) called \emph{PutGet} and \emph{GetPut} properties. Specifically, \emph{GetPut} refers that no extra update should be performed back on the source when there is no change on the view, while \emph{PutGet} hints that \emph{put} should apply all changes on the view to the source so that the view can be regenerated from the updated source by \emph{get}. The most distinguished point of BX is that view can contain only a few part elements of source. Actually, BX stems from the the view update problem in database \cite{bancilhon1981update}, which studies how to translate the updates on a view table to the updates on the relating base (source) table. By designate some consistency between source and view, BX programs can synchronize the source and view and promise that they satisfy the consistency.
+	The theory of BXs was proposed to synchronize two parts of related information (i.e., source and view).  A BX consists of a pair of forward and backward transformations. A forward transformation (denoted as \emph{get}) extracts elements from the source to build an abstract view, and the backward transformation (denoted as \emph{put}\footnote{\emph{put} is not a simple inverse of \emph{get}. Instead, it accepts the view and the original source as input and produces an updated source as output.}) embeds information of the view back into the source and produces an updated source. This pair of transformations should satisfy the {\em round-tripping} laws (i.e., {\em well-behaveness}) called \emph{PutGet} and \emph{GetPut} properties. 
+	\begin{align}
+	get (put(\textbf{source}, \textbf{view}))= \textbf{view} \tag {\emph{PutGet}} \\
+	put (\textbf{source}, get (\textbf{source})) = \textbf{source} \tag {\emph{GetPut}} 
+	\end{align}
+	
+	Specifically, \emph{GetPut} refers that no extra update should be performed back on the source when there is no change on the view, while \emph{PutGet} hints that \emph{put} should apply all changes on the view to the source so that the view can be regenerated from the updated source by \emph{get}. The most distinguished point of BX is that view can contain only a few part elements of source. Actually, BX stems from the the view update problem in database \cite{bancilhon1981update}, which studies how to translate the updates on a view table to the updates on the relating base (source) table. By designate some consistency between source and view, BX programs can synchronize the source and view and promise that they satisfy the consistency.
 	
 	One recent big progress towards practical use of BX is the observation that the essence of bidirectional programming is nothing but writing a well-behaved backward transformation (\emph{put})~\cite{hu2014validity, pacheco2014monadic, pacheco2014biflux}, because the corresponding forward transformation can be derived uniquely and freely. A core language, BiGUL~\cite{bigul}, has been developed for putback-based bidirectional programming.
     %refer BIRD
     
 \section{System architecture}
-
-In this section, we will illustrate our system architecture. Part A will describe the data distribution between sharing peers. Part B will present our system design and later explain it using an update scenario.
+\label{system}
+     We are ready to illustrate our system architecture in this section. Part A describes the data \footnote{
+	 In our prototype, medical data are entered directly by nodes such as doctor. Later we may consider to use the data from wearable devices.} distribution between sharing peers. Part B presents our system design and later explain it using an update scenario.
 
 \subsection{Data distribution}
 
@@ -180,7 +138,7 @@ Shared data can exist in different peers, as shown in Fig. \ref{DB architecture}
 Each node will store its all data on a bigger database, such as D1, D2 and D3. Each shared data can be seen as a view which is produced by this bigger database named as source. For example, D12 can be made from D1 by using \emph{get}. If D12 is modified, then the D1 need to be reproduced from original D1 and D12 by using \emph{put}. We just write BX in researcher and patient side to express the pair of \emph{get} and \emph{put} functions.
 
 Note in our data distribution, shared data between any two parties will not be exposed to the third party, which can keep privacy between two parties in some degree. For example, any update on D12 and D21 can only be known by patient and researcher. However, after the change on D21 are reflected to D2, since D2 has been modified, D23 might need to be updated to a new version by using \emph{put} on D2.
-%想表达任何两方共享数据的修改不会被第三方知道，但是对第三方数据的影响可以通过BX反映
+%??????????????????????????????????????BX??
 
 Fig. \ref{dataRepresentation} presents an example to show data distribution between patient Alice, doctor Bob and researcher Charlie. Each party have their own local base table, named as D1, D2, D3 respectively. For each table, there are some attributes such as medication name and address on D1. Table D13 (also D31) are shared by Alice and Bob and can be produced from either D1 or D3 by \emph{get}. Table D23 (also D32) are shared by Charlie and Bob and can be generated from D2 or D3 by \emph{get}.  Shared tables all stay in sharing peer's local databases. Note here the metadata collection table resides in the smart contract on blockchain. Each entry of metadata collection table corresponds to a shared table. For example, the entry for D13 or D31 declare that it is shared by Alice and Bob and Bob can update all attributes value but Alice can only change the clinical data. The "Latest Update Time" shows when the metadata was changed most recently. Moreover, "Authority to Change Permission allow Bob to change other peers (here just Alice)'s authority so that Alice can update dosage by change the value for "Dosage" attribute to "Bob, Alice".
 
@@ -259,47 +217,68 @@ After the update on D2, the researcher wants to propagate the update to the shar
 
 
 \section{discussion}
+\label{discuss}
+In this section, we add more details about our contributions. In addition, we identify some threats to our system and propose relating countermeasures.
 
-\subsection{Pros of our solution}
+\subsection{Detailed contributions}
 \begin{itemize}
-	\item blockchain's distribute consensus protocol scheme keep the shared data between all sharing peers are consistent.
+	\item Nodes can split total data into multiple pieces which can be shared with different nodes, which make sharing exists among only a group of nodes. So that it can avoid the interference or attack from other nodes. Meanwhile, data provider can choose what they want to share with others without exposing sensitive or private information.
 	
-	\item Keep sensitive data private 
-	%(MedRec: We recognize that not all provider records can or should be made available to patients (i.e. psychotherapy notes, or physician intellectual property) [6], and thus MedRec does not presume to be an automatic content-management system for all of a Physician's output. => We allow provider to designate the data want to share by giving consistent relationship)
+	\item Any update on shared data can be reflected to local total database by using \emph{put}. Consistency between shared data and local total data are firmly promised by BX. 
 	
-	\item All modification on shared data can be recorded on blockchain (tamper-resist; permanent)
+	\item Permission to updates to medical data are stored in smart contracts so that blockchain can prevent operations from malicious nodes. 
+	
+	\item Raw medical data always stay in each peer's local database and data transfer only exist between sharing peers, which avoid data being leaked to the third party so as to keep shared data security .
+	
+	\item Blockchain's  consensus protocol scheme keep the shared data between sharing peers are same after updates since each peer will receive the notification from contracts and pull new shared data from other sharing peers.
+
+	\item Any modification on shared data can be recorded on blockchain. Blockchain properties such as immutability, auditablility and transparency enable nodes to check and review update history on shared data.
+	
+	\item Simultaneously updates to the same shared data by multiple peers are forbidden. Smart contracts dispose the updates according to received requests in chronological order. If a transaction for updates on shared data has been included in a block, then other requests on this shared data will not be accepted, i.e., one block can contain one transaction at most on some shared data at one time. This can promise that only when all sharing peers have had newest shared data can they execute further operations.
+	
+	\item Each node can be a shared data provider. As referred in \cite{chung2018using},  many clinics encourage patients to collect data by themselves that are supposed to be gathered by doctors and expect to increase clinic efficiency and promote patient awareness.
+	
+	\item Our system can also be applied to other scenarios besides medical data sharing.
+	
 \end{itemize}
 
-\subsection{Data source}
-%"by integrating with providers' existing data storage infrastructure, we
-%facilitate continued use of their existing systems. We believe this will ease adoption and aid compliance with HIPAA regulations. . In addition, MedRec is source agnostic, i.e. able to receive data from any number of endpoints (physician offices, hospital servers, patient home computers, et cetera). We have developed MedRec not as a proprietary system, but as a set of open APIs to facilitate EHR review and exchange. "
-
-%\subsection{Maintaining the Integrity of the Specifications}
-
-\subsection{Threat to validity}
-\subsubsection{Privacy}
-threat1 + possible solution
-privacy: blockchain limitations 
-
+\subsection{Threats and countermeasures}
 \subsubsection{Throughput}
-threat2 + possible solution
+We employ smart contracts to control access to shared data. As we all known that the block creation time is approximately 12 \textit{s} on Ethereum. We argue that this time interval is acceptable since nodes may choose to collect a lot of updates then send requests to contracts. Usually it is not so urgent for a patient or doctor get the immediate updated shared data.
 
-\subsubsection{Robustness}
+\subsubsection{Security of smart contracts }
+Smart contracts might be the prime targets for attackers. We may apply some theorem prover such as Coq\cite{huet2004coq} to prove or verify the correctness of smart contracts to prevent these attacks.
+
+\subsubsection{Scalability}
+Once deployed to the public Ethereum blockchain, transactions relating to our systems might not be chosen into a block by miners. So a private blockchain might be a better choice for our system.
+
+\subsubsection{Incentive}
+Like in \cite{dagher2018ancile}, we don't include any incentive for mining beyond the use of our system. We presume that all nodes on the blockchain already have incentives to keep medical data from being tampered and illegal access or updates.
 
 \section{Related work}
-The idea of introducing Blockchain technology to healthcare data system was presented firstly in \cite{yue2016healthcare} where they use blockchain for data storage to guarantee medical data can not be modified by anyone. Also, they designed a Healthcare Data Gateway (HDG) to control access of the shared data. However, medical data size can become huge so that become a burden for blockchain nodes' storage since each node have the same copy of blockchain. MedRec \cite{azaria2016medrec} choose to store raw medical data on providers' database and patients can download the data from it after authorized by smart contract on blockchain. They aimed to enable patient to engage in their healthcare.
+\label{related work}
+In this section we review existing blockchain-based research on medical data sharing field and state advantages of our system compared with them.
 
-But not all provider data such as physician intellectual property can be exposed to patients \cite{us2017individuals, grossman2011clinical}. Instead, we allow each node share a piece of medical data not total but still keep consistency between them after the updates to the shared ones. Additionally, any modifications on data shared by two nodes will not be disclosed to the third party which keep the consistency only exists in sharing peers. Moreover, since all shared data with others can be a part of each nodes' local total databases, we can decide whether one shared data have some influence on the other shared pieces and then propagate this change to the third party.
+Zyskind et al. suggested using blockchain for access control in \cite{zyskind2015decentralizing} where encrypted data reside on the third party storage. But data might be exposed by this "trusted" third party so that data privacy are violated.
 
-Our solution differs with previous ones. In our system, all parties, such as doctors, patients, and researchers can benefit from sharing data with others. 
+The idea of introducing Blockchain technology to healthcare was presented firstly in \cite{yue2016healthcare} where they use blockchain for data storage to guarantee medical data can not be modified by anyone. Also, they designed a Healthcare Data Gateway (HDG) to control access of the shared data. However, medical data size can become huge so that become a burden for blockchain nodes' storage since each node have the same copy of blockchain. Usually, the size of metadata is smaller than data. (It also depends on the the structure of metadata and data.) We store metadata on smart contracts so as to reduce the storage pressure for each blockchain node.
+%Similarly, Patientory \cite{mcfarlane2017patientory} proposed that the medical data is stored directly on the HIPPA-compliant blockchain database.  
+
+MedRec \cite{azaria2016medrec} choose to store raw medical data on providers' database and patients can download the data from it after authorized by smart contract on blockchain. They aimed to enable patient to engage in their healthcare. Whereas in our system, all parties, such as doctors, patients, and researchers can benefit from sharing data with others. MedRec recognized that not all provider data such as physician intellectual property can be exposed to patients \cite{us2017individuals, grossman2011clinical} so that they don't claim to manage contents automatically from physician's output. In our work, instead we allow each node share a piece of medical data not total but still keep consistency between them after the updates to the shared ones. Additionally, any modifications on data shared by two nodes will not be disclosed to the third party which keep the consistency only exists in sharing peers. Moreover, since all shared data with others can be a part of each nodes' local total databases, we can decide whether one shared data have some influence on the other shared pieces and then propagate this change to the third party.
+
+\cite{dubovitskaya2017secure} gave an architecture to mange and share medical data for cancer patient care. They stored encrypted categorized shared data on cloud and relating metadata in blockchain and implemented the prototype on Hyperledger\cite{hyperledger2017hyperledger}. The access control policy are defined in the chaincode Logic by patients. Whereas we think that each data provider not just patients can use smart contracts to encode the control policy when they deploy them to Ethereum. 
+
+Notably, previous three works and others \cite{liu2018bpds,xia2017bbds,amofa2018blockchain,dagher2018ancile,fan2018medblock} mostly targeted to the access problem on shared data but did not pay much attention to updates on the them. Additionally, they presumed that different parties can share the same data. Unlike them, we aims to solve the updates issues on the shared data and allow one party can split total data into multiple pieces (i.e, views) which are shared with different parties but still keep consistency between source and views.
 
 
 \section{Conclusion}
+\label{conclude}
 
+We are still developing our prototype to implement our idea.
 In the future, we will use the real patient data to do experiment but use some de-identification technology to protect patient data from being exposed in terms of  
 
 \section*{Acknowledgment}
-The authors would like to thank all PRL lab members for the helpful advice in the draft version. 
+The authors would like to thank all PRL lab members for their helpful advice in the draft version.  This work was supported by ...
 
 \bibliographystyle{IEEEtran}
 \bibliography{ref}

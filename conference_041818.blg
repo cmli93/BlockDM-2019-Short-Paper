@@ -14,47 +14,48 @@ Database file #1: ref.bib
 Warning--empty journal in nakamoto2008bitcoin
 Warning--empty journal in wood2014ethereum
 Warning--empty year in wood2014ethereum
+Warning--missing school in chung2018using
 
 Done.
-You've used 15 entries,
+You've used 27 entries,
             4087 wiz_defined-function locations,
-            910 strings with 10578 characters,
-and the built_in function-call counts, 10349 in all, are:
-= -- 812
-> -- 236
-< -- 73
-+ -- 125
-- -- 43
-* -- 491
-:= -- 1568
-add.period$ -- 35
-call.type$ -- 15
-change.case$ -- 15
-chr.to.int$ -- 165
-cite$ -- 18
-duplicate$ -- 775
-empty$ -- 883
-format.name$ -- 55
-if$ -- 2403
+            972 strings with 12561 characters,
+and the built_in function-call counts, 18368 in all, are:
+= -- 1475
+> -- 448
+< -- 123
++ -- 233
+- -- 86
+* -- 870
+:= -- 2817
+add.period$ -- 61
+call.type$ -- 27
+change.case$ -- 27
+chr.to.int$ -- 255
+cite$ -- 31
+duplicate$ -- 1392
+empty$ -- 1517
+format.name$ -- 108
+if$ -- 4266
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 139
-newline$ -- 70
-num.names$ -- 15
-pop$ -- 342
+int.to.str$ -- 27
+missing$ -- 257
+newline$ -- 106
+num.names$ -- 27
+pop$ -- 612
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 791
+skip$ -- 1422
 stack$ -- 0
-substring$ -- 413
-swap$ -- 583
-text.length$ -- 18
+substring$ -- 657
+swap$ -- 1063
+text.length$ -- 38
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 15
-warning$ -- 3
-while$ -- 49
-width$ -- 17
-write$ -- 159
-(There were 3 warnings)
+type$ -- 27
+warning$ -- 4
+while$ -- 81
+width$ -- 29
+write$ -- 274
+(There were 4 warnings)
