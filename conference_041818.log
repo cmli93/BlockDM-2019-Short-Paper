@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.14)  24 DEC 2018 23:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.14)  25 DEC 2018 10:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -509,17 +509,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <DBStructure.png, id=15, 378.41376pt x 371.3875pt>
 File: DBStructure.png Graphic file (type png)
 <use DBStructure.png>
-Package pdftex.def Info: DBStructure.png  used on input line 146.
+Package pdftex.def Info: DBStructure.png  used on input line 147.
 (pdftex.def)             Requested size: 250.0pt x 245.36017pt.
 <medicalData.png, id=17, 846.16125pt x 630.355pt>
 File: medicalData.png Graphic file (type png)
 <use medicalData.png>
-Package pdftex.def Info: medicalData.png  used on input line 152.
+Package pdftex.def Info: medicalData.png  used on input line 153.
 (pdftex.def)             Requested size: 249.98984pt x 220.00235pt.
 <updateScenario.png, id=18, 540.0175pt x 403.5075pt>
 File: updateScenario.png Graphic file (type png)
 <use updateScenario.png>
-Package pdftex.def Info: updateScenario.png  used on input line 179.
+Package pdftex.def Info: updateScenario.png  used on input line 180.
 (pdftex.def)             Requested size: 230.0pt x 171.85475pt.
  [3 <./DBStructure.png> <./medicalData.png>] [4 <./updateScenario.png>] (./conf
 erence_041818.bbl [5])

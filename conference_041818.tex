@@ -11,7 +11,6 @@
 
 \begin{document}
 	
-	
 	%refer the presentations/ notaability hints about writing a paper
 	
 	% describe the protocol for control access (blockchain part)
@@ -84,6 +83,7 @@ Now a lot of medical data are digitalized so as to be stored and accessed conven
 To be shared by multiple parties, shared medical data could reside in encrypted format on the trusted cloud. Only authorized stakeholders can access the shared data. Centralized access control might lead to single point of failure and become the bottleneck of sharing system. Some medical data sharing systems \cite{azaria2016medrec,fan2018medblock,xia2017bbds} are proposed to manage authentication based on blockchain\cite{nakamoto2008bitcoin} technology. Being a immutable shared ledger, blockchain can achieve consensus among distributed nodes via proof of work. Encoding the access control logic of medical data into smart contracts\cite{azaria2016medrec} or Chaincode \cite{dubovitskaya2017secure} can prevent unauthorized party to access medical data, which will guarantee data security. Anyone who want to access medical data should be verified permission from blockchain side and their access process will be recorded on blockchain.
 
 However, generally different stakeholders may have different focus on the same medical records. For example, doctors might be more concerned with the clinical data and researchers are interested in mechanism of action, whereas patients care more about the medicine dosage standard. To reduce the size of shared data to improve access efficiency and avoid additional data interference, the complete medical data (data source) might be split into lots of smaller data pieces (data views) which are shared by different parties. Each view can be regenerated from the source. Source and view should satisfy predefined consistency relationship. Different views from one source might have overlapped data. Moreover, each party will have a local complete data and different data pieces to share with others. In this way, shared data are distributed among sharing parties.
+%??????????????????
 
 Not only limited to access data, patients or doctors may want to update existing shared data. Although some works \cite{azaria2016medrec} claimed to allow updates on shared medical data, they did not propose any concrete scheme to implement updates and show how to synchronize all sharing parties to keep them still have same shared data after updates.
 
@@ -132,6 +132,8 @@ The remainder are organized like this. Section \ref{preli} gives some preliminar
 	 In our prototype, medical data are entered directly by nodes such as doctor. Later we may consider to use the data from wearable devices.} distribution between sharing peers. Part B presents our system design and later explain it using an update scenario.
 
 \subsection{Data distribution}
+
+% If we build a big contract which is a list of list and each small list is a contract for a shared data
 
 Shared data can exist in different peers, as shown in Fig. \ref{DB architecture}. Suppose there are three entities, doctor, researcher and patient. Doctor and Researcher share some data which are stored in D12 on Doctor side and D21 on researcher side respectively. D12 and D21 should contain the same data, which means if doctor or researcher update this shared data on their own side, then this modification should be propagated to the shared part on the other side. Accordingly, D13 and D31 have the same content and so do in D23 and D32.
 
