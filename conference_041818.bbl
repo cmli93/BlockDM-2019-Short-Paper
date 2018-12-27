@@ -51,6 +51,10 @@ G.~Fitzpatrick and G.~Ellingsen, ``A review of 25 years of cscw research in
 O.~of~the National Coordinator~for Health Information~Technology, ``Report to
   congress: Report on health information blocking,'' 2015.
 
+\bibitem{chung2018using}
+C.-F. Chung, ``Using personal informatics data in collaboration among people
+  with different expertise,'' Ph.D. dissertation, 2018.
+
 \bibitem{azaria2016medrec}
 A.~Azaria, A.~Ekblaw, T.~Vieira, and A.~Lippman, ``Medrec: Using blockchain for
   medical data access and permission management,'' in \emph{Open and Big Data
@@ -76,18 +80,31 @@ A.~Dubovitskaya, Z.~Xu, S.~Ryu, M.~Schumacher, and F.~Wang, ``Secure and
   \emph{AMIA Annual Symposium Proceedings}, vol. 2017.\hskip 1em plus 0.5em
   minus 0.4em\relax American Medical Informatics Association, 2017, p. 650.
 
+\bibitem{hu2014validity}
+Z.~Hu, H.~Pacheco, and S.~Fischer, ``Validity checking of putback
+  transformations in bidirectional programming.'' in \emph{FM}, 2014, pp.
+  1--15.
+
 \bibitem{wood2014ethereum}
 G.~Wood, ``Ethereum: A secure decentralised generalised transaction ledger.''
+
+\bibitem{abou2018introduction}
+F.~Abou-Saleh, J.~Cheney, J.~Gibbons, J.~McKinna, and P.~Stevens,
+  ``Introduction to bidirectional transformations,'' in \emph{Bidirectional
+  Transformations}.\hskip 1em plus 0.5em minus 0.4em\relax Springer, 2018, pp.
+  1--28.
 
 \bibitem{bancilhon1981update}
 F.~Bancilhon and N.~Spyratos, ``Update semantics of relational views,''
   \emph{ACM Transactions on Database Systems (TODS)}, vol.~6, no.~4, pp.
   557--575, 1981.
 
-\bibitem{hu2014validity}
-Z.~Hu, H.~Pacheco, and S.~Fischer, ``Validity checking of putback
-  transformations in bidirectional programming.'' in \emph{FM}, 2014, pp.
-  1--15.
+\bibitem{czarnecki2009bidirectional}
+K.~Czarnecki, J.~N. Foster, Z.~Hu, R.~L{\"a}mmel, A.~Sch{\"u}rr, and J.~F.
+  Terwilliger, ``Bidirectional transformations: A cross-discipline
+  perspective,'' in \emph{International Conference on Theory and Practice of
+  Model Transformations}.\hskip 1em plus 0.5em minus 0.4em\relax Springer,
+  2009, pp. 260--283.
 
 \bibitem{pacheco2014monadic}
 H.~Pacheco, Z.~Hu, and S.~Fischer, ``Monadic combinators for putback style
@@ -110,10 +127,6 @@ H.-S. Ko, T.~Zan, and Z.~Hu, ``{BiGUL}: A formally verified core language for
   2016, pp. 61--72. [Online]. Available:
   \url{http://doi.acm.org/10.1145/2847538.2847544}
 \BIBentrySTDinterwordspacing
-
-\bibitem{chung2018using}
-C.-F. Chung, ``Using personal informatics data in collaboration among people
-  with different expertise,'' Ph.D. dissertation, 2018.
 
 \bibitem{huet2004coq}
 G.~Huet, G.~Kahn, and C.~Paulin-Mohring, ``The coq proof assistant a

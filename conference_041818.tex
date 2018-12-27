@@ -32,7 +32,8 @@
 	% ??????????????????????????????
 	% ???????????????????????whitelist???????????????????????????????????
 
-\title{Authorized Updates to Distributed Medical Data}
+\title{Distributed Authorized Medical Data Management}
+%\title{Authorized Updates to Distributed Medical Data}
 
 \author{
 	\IEEEauthorblockN{%
@@ -60,18 +61,20 @@
 
 \maketitle
 
-%???a, the, an ???
+%regulate the use of a, an, the
 \begin{abstract}
-
-% From MedRec: (our target problem)
-% We recognize  that not all provider records can or should be made available to  patients (i.e. psychotherapy notes, or physician intellectual property) [6], and thus MedRec does not presume to be an automatic content-management system for all of a Physician's output. ?????????shared data?local data?????????
-%MedRec does not claim to address the security of individual provider  databases where the record content is stored. ?=> shared ??????peers????? This must still be managed  by the local IT admin. Nor does MedRec attempt to solve the Digital  Rights Management problem. ?data provider can ??????? as view)
+	Electronic Medical data sharing between stakeholders, such as patients, doctors and researchers can promote more effective medical treatment collaboratively. These sensitive and private data could only be accessed by authorized users.  Given a total medical data, users may care parts of them and other unrelated information might interfere the user-interested data search and increase the risk of exposure. Besides accessing these data, users may want to update them and propagate to other sharing peers so that all peers keep identical data after each update. To satisfy these requirements, in this paper we propose a medical data sharing architecture that addresses the permission control using smart contracts on blockchain and splits data into pieces shared with different peers then synchronize complete data and these pieces after updates with bidirectional transformations. Medical data reside on each user's local database and permission-related data are stored on smart contracts. Only all peers have gained the newest shared data after updates can they start to do next operations on it, which are enforced by smart contracts. Blockchain-based  immutable shared ledge enable users to trace data updates history. This paper can provide a new perspective to view complete medical data as different slices to be shared with various peers but consistency after updates between them are still promised, which can protect privacy and improve data search efficiency.
 
 \end{abstract}
 
 \begin{IEEEkeywords}
-medical data, authorization, update
+medical data, authorization, update, distributed
 \end{IEEEkeywords}
+
+
+% From MedRec: (our target problem)
+% We recognize  that not all provider records can or should be made available to  patients (i.e. psychotherapy notes, or physician intellectual property) [6], and thus MedRec does not presume to be an automatic content-management system for all of a Physician's output. ?????????shared data?local data?????????
+%MedRec does not claim to address the security of individual provider  databases where the record content is stored. ?=> shared ??????peers????? This must still be managed  by the local IT admin. Nor does MedRec attempt to solve the Digital  Rights Management problem. ?data provider can ??????? as view)
 
 \section{Introduction}
 
@@ -82,16 +85,18 @@ Now a lot of medical data are digitalized so as to be stored and accessed conven
 
 To be shared by multiple parties, shared medical data could reside in encrypted format on the trusted cloud. Only authorized stakeholders can access the shared data. Centralized access control might lead to single point of failure and become the bottleneck of sharing system. Some medical data sharing systems \cite{azaria2016medrec,fan2018medblock,xia2017bbds} are proposed to manage authentication based on blockchain\cite{nakamoto2008bitcoin} technology. Being a immutable shared ledger, blockchain can achieve consensus among distributed nodes via proof of work. Encoding the access control logic of medical data into smart contracts\cite{azaria2016medrec} or Chaincode \cite{dubovitskaya2017secure} can prevent unauthorized party to access medical data, which will guarantee data security. Anyone who want to access medical data should be verified permission from blockchain side and their access process will be recorded on blockchain.
 
-However, generally different stakeholders may have different focus on the same medical records. For example, doctors might be more concerned with the clinical data and researchers are interested in mechanism of action, whereas patients care more about the medicine dosage standard. To reduce the size of shared data to improve access efficiency and avoid additional data interference, the complete medical data (data source) might be split into lots of smaller data pieces (data views) which are shared by different parties. Each view can be regenerated from the source. Source and view should satisfy predefined consistency relationship. Different views from one source might have overlapped data. Moreover, each party will have a local complete data and different data pieces to share with others. In this way, shared data are distributed among sharing parties.
+We realized that there are still another requirements on data sharing and state them as follow.
+
+Firstly, generally different stakeholders may have different focus on the same medical records. For example, doctors might be more concerned with the clinical data and researchers are interested in mechanism of action, whereas patients care more about the medicine dosage standard. To reduce the size of shared data to improve access efficiency and avoid additional data interference, the complete medical data (data source) might be split into lots of smaller data pieces (data views) which are shared by different parties. Each view can be regenerated from the source. Source and view should satisfy predefined consistency relationship. Different views from one source might have overlapped data. Moreover, each party will have a local complete data and different data pieces to share with others. In this way, shared data are distributed among sharing parties.
 %??????????????????
 
-Not only limited to access data, patients or doctors may want to update existing shared data. Although some works \cite{azaria2016medrec} claimed to allow updates on shared medical data, they did not propose any concrete scheme to implement updates and show how to synchronize all sharing parties to keep them still have same shared data after updates.
+Secondly, not only limited to access data, patients or doctors may want to update existing shared data. Although some works \cite{azaria2016medrec} claimed to allow updates on shared medical data, they did not propose any concrete scheme to implement updates and show how to synchronize all sharing parties to keep them still have same shared data after updates.
 
 %But how about read, add, delete shared data?
 %Since the shared data just reside in each peer's local database, read the shared data is easily promised.
 In this paper, we aim to solve authorized updates issues on distributed shared medical data as stated above. 
 %for updates distributed shared medical data
-Each participant may have multiple shared data with different peers and keep this shared ones consistent with local complete database. Bidirectional transformations \cite{hu2014validity} (BXs hereafter) can help synchronize them after updates on either one side. For example, we can use \emph{put} function in BX to reflect modifications on shared data to complete data and \emph{get} to reproduce shared data from complete data. 
+Each participant may have multiple shared data \footnote{Our work assume that the initialization of shared data has been finished. We only consider management on existing shared data.} with different peers and keep this shared ones consistent with local complete database. Bidirectional transformations \cite{hu2014validity} (BXs hereafter) can help synchronize them after updates on either one side. For example, we can use \emph{put} function in BX to reflect modifications on shared data to complete data and \emph{get} to reproduce shared data from complete data. 
 %For authorization
 Moreover,  any operations on the shared data should be conducted after the peer has been authorized. Any modifications on the existing shared data should be updated to all sharing peers immediately. We encodes the sharing peers not pointers to the raw data into smart contracts in case of private data leakage. Each sharing peer will receive the notification from smart contracts after an update on shared data are verified. Then each peer will request the newest data from updater and then use it to update his local complete data. Smart contracts will refuse any further operations on shared data before all sharing peers have pulled the newest data to their local database.
 
@@ -115,27 +120,49 @@ The remainder are organized like this. Section \ref{preli} gives some preliminar
 	Not only can support the platform of cryptocurrency, blockchain can also be applied to other scenes. Ethereum \cite{wood2014ethereum} extend blockchain with additions such as a built-in Turing-complete programming language so that one can use this scripts (i.e., Ethereum Virtual Machine (EVM) byte codes) to write programs (i.e., smart contracts \footnote{Hyperledger and others still provide platforms to write smart contracts.}) on blockchain. We can just write Solidity \footnote{https://solidity.readthedocs.io/en/v0.5.2/} programs and then it can be compiled to EVM code. Besides the user accounts controlled by private keys like in Bitcoin, the accounts for smart contracts are allowed in Ethereum. Anyone can build decentralized applications which consists of a collection of smart contracts. Once a transaction involving smart contract creation gets confirmed, an address is generated for the contract and later anyone can send transactions to this address for executing the logic on it. A smart contract transaction is enforced when a miner includes it in a new produced block. Other nodes will validate it and re-run contracts if it is valid.
 	
 	\subsection{Bidirectional transformation}
-	The theory of BXs was proposed to synchronize two parts of related information (i.e., source and view).  A BX consists of a pair of forward and backward transformations. A forward transformation (denoted as \emph{get}) extracts elements from the source to build an abstract view, and the backward transformation (denoted as \emph{put}\footnote{\emph{put} is not a simple inverse of \emph{get}. Instead, it accepts the view and the original source as input and produces an updated source as output.}) embeds information of the view back into the source and produces an updated source. This pair of transformations should satisfy the {\em round-tripping} laws (i.e., {\em well-behaveness}) called \emph{PutGet} and \emph{GetPut} properties. 
+	%Two directions are good, but hard to keep well behaveness. Once change one side, need to modify another side.
+	% BXs: write one program to express two directions 
+	% get-based may relate to multiple puts for one get
+	% put-based is injective and better 
+	Maintaining consistency between different data representations (i.e., source and view) with "the same" underlying meaning \footnote{Here we consider view is a part of source.}  is important \cite{abou2018introduction}. For example, view update problem in database \cite{bancilhon1981update} studies how to translate the updates on a view table to the updates on the relating base (source) table. To achieve this, one may think to provide two separate programs to represent two directions to propagate the updates to one side to another. But it is hard to prove source and view can still keep consistency after updates. Bidirectional transformations (BXs hereafter) was proposed  \cite{czarnecki2009bidirectional} to solve this.
+	
+	A BX program can be invoked from forward and backward transformations. A forward transformation (denoted as \emph{get}) extracts elements from the source to build an abstract view, and the backward transformation (denoted as \emph{put}\footnote{\emph{put} is not a simple inverse of \emph{get}. Instead, it accepts the view and the original source as input and produces an updated source as output.}) embeds information of the view back into the source and produces an updated source. This pair of transformations should satisfy the {\em round-tripping} laws (i.e., {\em well-behaveness}) called \emph{PutGet} and \emph{GetPut} properties. 
 	\begin{align}
 	get (put(\textbf{source}, \textbf{view}))= \textbf{view} \tag {\emph{PutGet}} \\
 	put (\textbf{source}, get (\textbf{source})) = \textbf{source} \tag {\emph{GetPut}} 
 	\end{align}
 	
-	Specifically, \emph{GetPut} refers that no extra update should be performed back on the source when there is no change on the view, while \emph{PutGet} hints that \emph{put} should apply all changes on the view to the source so that the view can be regenerated from the updated source by \emph{get}. The most distinguished point of BX is that view can contain only a few part elements of source. Actually, BX stems from the the view update problem in database \cite{bancilhon1981update}, which studies how to translate the updates on a view table to the updates on the relating base (source) table. By designate some consistency between source and view, BX programs can synchronize the source and view and promise that they satisfy the consistency.
+	Specifically, \emph{GetPut} refers that no extra update should be performed back on the source when there is no change on the view, while \emph{PutGet} hints that \emph{put} should apply all changes on the view to the source so that the view can be regenerated from the updated source by \emph{get}. One BX program can represent two directions and we can achieve the transformation from one side to another by invoking \emph{get} or \emph{put} direction of it. The most distinguished point of BX is that view can contain only a few part elements of source. By designate some consistency between source and view, BX programs can synchronize the source and view and promise that they still satisfy the consistency after updates on either one side.
 	
 	One recent big progress towards practical use of BX is the observation that the essence of bidirectional programming is nothing but writing a well-behaved backward transformation (\emph{put})~\cite{hu2014validity, pacheco2014monadic, pacheco2014biflux}, because the corresponding forward transformation can be derived uniquely and freely. A core language, BiGUL~\cite{bigul}, has been developed for putback-based bidirectional programming.
-    %refer BIRD
+    %don't refer BIRD (unpublished)
     
 \section{System architecture}
 \label{system}
-     We are ready to illustrate our system architecture in this section. Part A describes the data \footnote{
-	 In our prototype, medical data are entered directly by nodes such as doctor. Later we may consider to use the data from wearable devices.} distribution between sharing peers. Part B presents our system design and later explain it using an update scenario.
+     We are ready to illustrate our system architecture in this section. Part A describes the data \footnote{In our prototype, medical data are entered directly by nodes such as doctor. Later we may consider to use the data from wearable devices.} distribution between sharing peers. Part B presents our system design and later explain it using an update scenario.
 
 \subsection{Data distribution}
 
 % If we build a big contract which is a list of list and each small list is a contract for a shared data
+For later description, we regulate some nomenclature which are shown in TABLE \ref{nomenclature}.
 
-Shared data can exist in different peers, as shown in Fig. \ref{DB architecture}. Suppose there are three entities, doctor, researcher and patient. Doctor and Researcher share some data which are stored in D12 on Doctor side and D21 on researcher side respectively. D12 and D21 should contain the same data, which means if doctor or researcher update this shared data on their own side, then this modification should be propagated to the shared part on the other side. Accordingly, D13 and D31 have the same content and so do in D23 and D32.
+\begin{table}[htbp]
+	\caption{Adopted Nomenclature}
+	\begin{center}
+		\begin{tabular}{c|c}
+	    \hline
+	    Nomenclature & Meaning \\
+	    \hline
+		Nodes & A device connected to blockchain network  \\
+		Users &   stakeholders in medical scenarios\\ 
+	    Sharing peers &  Some users who share the same data  \\
+		\hline
+		\end{tabular}
+		\label{nomenclature}
+	\end{center}
+\end{table}
+
+Shared data can exist in different peers, as shown in Fig. \ref{DB architecture}. Suppose there are three entities, doctor, researcher and patient. Doctor and Researcher share some data which are stored in D12 on Doctor side and D21 on researcher side respectively. D12 and D21 should contain the same data, which means if doctor or researcher update this shared data on their own side, then this modification should be propagated to the shared part on the other side. Accordingly, D13 and D31 have the same content and so do in D23 and D32. Notably, the format and contents are determined by sharing peers.
 
 Each node will store its all data on a bigger database, such as D1, D2 and D3. Each shared data can be seen as a view which is produced by this bigger database named as source. For example, D12 can be made from D1 by using \emph{get}. If D12 is modified, then the D1 need to be reproduced from original D1 and D12 by using \emph{put}. We just write BX in researcher and patient side to express the pair of \emph{get} and \emph{put} functions.
 
@@ -184,12 +211,13 @@ Our system consists of following components, which can be seen from Fig. \ref{wo
 \end{figure}
 
 \subsection{Case analysis}
-Fig. \ref{workflow} depicts an scenario where researcher initiates the update the shared data. The numbers indicates the corresponding operations sequence.
+Fig. \ref{workflow} depicts an scenario where researcher initiates the update the shared data. The numbers indicates the corresponding operations sequence. D1, D2, D3 are user's local database. D23 are identical with D32 and shared by the doctor and the researcher. D31 and D13 are same and shared by the doctor and the patient. Every shared data correspond to a BX program. For example, $BX_{23}-get$ represents the invoking on \textit{get} direction on the BX program which is used to synchronize D2 and D23. The red and blue circles with wrong sign indicate the updated places.
 
-After the update on D2, the researcher wants to propagate the update to the shared data D23 so that he uses the \emph{put} to regenerate D23 in(step 1). Then he will call a smart contract via a node by sending the repquest for update to the shared data (i.e., D32) (step 2). Note that a smart contract records all permission info about that shared data. Only the researcher's update satisfy the permission can his update be propagated to others. The smart contract will be executed until all nodes form consensus on this update request, which means researcher is authorized to update the shared data with doctor. Each node will conduct the smart contract locally. The metadata of shared data will be updated. Meanwhile, the node relating to Doctor will receive the notification from contract that the shared data with researcher need to modified (step 3). The doctor will request data from researcher by sending a message based on some encrypted communication protocol and get the newest shared data to refresh D32 (step 4). After that, doctor will use \emph{put} to reflect the change on D32 to the total database D3 (step 5). Since doctor shared some data (D31) with patient, he need to check whether D31 need to be reproduced (step 6). If yes, he will use \emph{get} to regenerate D31 (step 7) and request smart contract for permission to update D13 (step 8). Once this permission is allowed, patient will receive the notification about the change on shared data and ask doctor to send the updated D31. After patient get the modified D31 (step 9), he will use this to update D1 via \emph{put} (step 10).  
+Let's try to describe this work flow for updating shared data. After the update on D2, the researcher wants to propagate the update to the shared data D23 so that he uses the \emph{$BX_{23}$-get} to regenerate D23 (step 1). Then he will call a smart contract via a node connected to Ethereum by sending the request for updates to the D23 (step 2). Note that the smart contract records all permission info about that D23. Only when the researcher are authorized his update are seen valid and can be propagated to D32. The smart contract will be executed until all nodes form consensus on this update request, which means researcher is permitted to update D23. Each node will conduct the smart contract locally. The entry relating D23 \& D32 of the contract are modified and doctor will receive notification that D32 need to modified (step 3). Then he will request data from the researcher by sending a message based on some encrypted communication protocol and get the newest shared data to refresh D32 (step 4). After that, doctor will use \emph{$BX_{32}$-put} to reflect the change on D32 to D3 (step 5). Since doctor shared some data (D31) with patient, he need to check whether D31 need to be reproduced (step 6). (If there is no need to reproduce, step 6 - 11 will not happen.) If yes, he will use \emph{$BX_{31}$-get} to regenerate D31 (step 7) and request smart contract for permission to update D13 (step 8). Once allowed, patient will receive the notification about the change on shared data (D31) (step 9) and ask doctor to send the updated D31. After patient get the modified D31 (step 10), he will use this to update D1 via \emph{put} (step 11).  
 
-%Suppose a scenario as follow, which can be seen in Fig....
-%
+Step 1 - 5 achieve the propagation of updates from one peer to another. Especially, step 6 check whether the images of D32 and D32 on D3 have some dependences. Step 7 - 11 have the same operational logic.
+
+
 %Suppose Alice, Bob, Charlie are sharing data Da. 
 %Alice update the local overall database and want to upload the update on the shared data. She will ask blockchain for permission. After the consensus, she should update the metadata of Da of smart contract on blockchain. Then smart contract will notify Bob and Charlie that the shared data has changed to a new version. Bob and Charlie will send request to Alice. Then Alice will apply \emph{get} to get the view (i.e., updated shared data) and send the Bob and  Charlie the new shared data. Once Bob or Charlie received the new Da, he will update the metadata on smart contract to show that he has upgrade the Da and then use \emph{put} to reflect the change on their own database. 
 %
@@ -223,7 +251,7 @@ After the update on D2, the researcher wants to propagate the update to the shar
 In this section, we add more details about our contributions. In addition, we identify some threats to our system and propose relating countermeasures.
 
 \subsection{Detailed contributions}
-\begin{itemize}
+\begin{itemize} %So many dots...
 	\item Nodes can split total data into multiple pieces which can be shared with different nodes, which make sharing exists among only a group of nodes. So that it can avoid the interference or attack from other nodes. Meanwhile, data provider can choose what they want to share with others without exposing sensitive or private information.
 	
 	\item Any update on shared data can be reflected to local total database by using \emph{put}. Consistency between shared data and local total data are firmly promised by BX. 
@@ -246,12 +274,12 @@ In this section, we add more details about our contributions. In addition, we id
 
 \subsection{Threats and countermeasures}
 \subsubsection{Throughput}
-We employ smart contracts to control access to shared data. As we all known that the block creation time is approximately 12 \textit{s} on Ethereum. We argue that this time interval is acceptable since nodes may choose to collect a lot of updates then send requests to contracts. Usually it is not so urgent for a patient or doctor get the immediate updated shared data.
+We employ smart contracts to control access to shared data. As we all known that the block creation time is approximately 12 seconds on Ethereum. We argue that this time interval is acceptable since nodes may choose to collect a lot of updates then send requests to contracts. Usually it is not so urgent for a patient or doctor get the immediate updated shared data.
 
-\subsubsection{Security of smart contracts }
-Smart contracts might be the prime targets for attackers. We may apply some theorem prover such as Coq\cite{huet2004coq} to prove or verify the correctness of smart contracts to prevent these attacks.
+\subsubsection{Correctness of smart contracts }
+Smart contracts might be inconsistent with specifications. We may apply some theorem prover such as Coq\cite{huet2004coq} to prove or verify the correctness of smart contracts to prevent these attacks.
 
-\subsubsection{Scalability}
+\subsubsection{Public blockchain}
 Once deployed to the public Ethereum blockchain, transactions relating to our systems might not be chosen into a block by miners. So a private blockchain might be a better choice for our system.
 
 \subsubsection{Incentive}
@@ -268,19 +296,21 @@ The idea of introducing Blockchain technology to healthcare was presented firstl
 
 MedRec \cite{azaria2016medrec} choose to store raw medical data on providers' database and patients can download the data from it after authorized by smart contract on blockchain. They aimed to enable patient to engage in their healthcare. Whereas in our system, all parties, such as doctors, patients, and researchers can benefit from sharing data with others. MedRec recognized that not all provider data such as physician intellectual property can be exposed to patients \cite{us2017individuals, grossman2011clinical} so that they don't claim to manage contents automatically from physician's output. In our work, instead we allow each node share a piece of medical data not total but still keep consistency between them after the updates to the shared ones. Additionally, any modifications on data shared by two nodes will not be disclosed to the third party which keep the consistency only exists in sharing peers. Moreover, since all shared data with others can be a part of each nodes' local total databases, we can decide whether one shared data have some influence on the other shared pieces and then propagate this change to the third party.
 
-\cite{dubovitskaya2017secure} gave an architecture to mange and share medical data for cancer patient care. They stored encrypted categorized shared data on cloud and relating metadata in blockchain and implemented the prototype on Hyperledger\cite{hyperledger2017hyperledger}. The access control policy are defined in the chaincode Logic by patients. Whereas we think that each data provider not just patients can use smart contracts to encode the control policy when they deploy them to Ethereum. 
+Dubovitskaya at al. gave an architecture to mange and share medical data for cancer patient care \cite{dubovitskaya2017secure}. They stored encrypted categorized shared data on cloud and relating metadata in blockchain and implemented the prototype on Hyperledger\cite{hyperledger2017hyperledger}. The access control policy are defined in the chaincode Logic by patients. Whereas we think that each data provider not just patients can use smart contracts to encode the control policy when they deploy them to Ethereum. 
 
 Notably, previous three works and others \cite{liu2018bpds,xia2017bbds,amofa2018blockchain,dagher2018ancile,fan2018medblock} mostly targeted to the access problem on shared data but did not pay much attention to updates on the them. Additionally, they presumed that different parties can share the same data. Unlike them, we aims to solve the updates issues on the shared data and allow one party can split total data into multiple pieces (i.e, views) which are shared with different parties but still keep consistency between source and views.
 
-
+%Distributed Authorized Medical Data Management
 \section{Conclusion}
 \label{conclude}
 
-We are still developing our prototype to implement our idea.
-In the future, we will use the real patient data to do experiment but use some de-identification technology to protect patient data from being exposed in terms of  
+Medical data sharing are necessary and important, which allow peers (i.e., patients, doctors, researchers and others) to contribute their knowledge to better the medical treatment. Users may have different interest on the same complete medical record. Some peers might update some values of fields in the existing data. This updates need to be propagated to sharing peers. Our architecture divides a record into pieces shared with different users separately, which can protect data privacy by limiting essential data between two peers and reduce the unrelated data interference. Any updates on data pieces can be synchronized to complete records by bidirectional transformations. Moreover, based on smart contracts on blockchain, we can promise that only authorized users can update the existing shared data and only when all peers have updated to the newest data contents they can continue the operations on shared data.   
+
+We are still developing the prototype to implement our idea.
+In the future, we will use the real patient data to do experiment but use some de-identification technology to protect patient data from being exposed. 
 
 \section*{Acknowledgment}
-The authors would like to thank all PRL lab members for their helpful advice in the draft version.  This work was supported by ...
+The authors would like to thank all PRL lab members for their helpful advice in the paper draft.  Thanks Hsiang-Shang Ko for revising the BX parts and providing valuable suggestions to our work. Thanks Van-Dang Tran's help on building the initial data distribution idea sketch. This work is partially supported by the Japan Society for the Promotion of Science (JSPS) Grant-in-Aid for Scientific Research (S) No. 17H06099.
 
 \bibliographystyle{IEEEtran}
 \bibliography{ref}
