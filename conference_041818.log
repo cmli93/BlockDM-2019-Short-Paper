@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.14)  27 DEC 2018 15:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.14)  27 DEC 2018 15:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -402,25 +402,25 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 (./conference_041818.aux)
 \openout1 = `conference_041818.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 11.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    ... okay on input line 11.
 
 -- Lines per column: 56 (exact).
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -492,13 +492,13 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 62.
-LaTeX Font Info:    Try loading font information for U+msa on input line 62.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 46.
+LaTeX Font Info:    Try loading font information for U+msa on input line 46.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 62.
+LaTeX Font Info:    Try loading font information for U+msb on input line 46.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -512,21 +512,21 @@ Underfull \vbox (badness 1895) has occurred while \output is active []
 <DBStructure.png, id=15, 378.41376pt x 371.3875pt>
 File: DBStructure.png Graphic file (type png)
 <use DBStructure.png>
-Package pdftex.def Info: DBStructure.png  used on input line 175.
+Package pdftex.def Info: DBStructure.png  used on input line 152.
 (pdftex.def)             Requested size: 250.0pt x 245.36017pt.
 <medicalData.png, id=17, 846.16125pt x 630.355pt>
 File: medicalData.png Graphic file (type png)
 <use medicalData.png>
-Package pdftex.def Info: medicalData.png  used on input line 181.
+Package pdftex.def Info: medicalData.png  used on input line 158.
 (pdftex.def)             Requested size: 249.98984pt x 220.00235pt.
  [3 <./DBStructure.png>]
 <updateScenario.png, id=22, 496.85625pt x 423.5825pt>
 File: updateScenario.png Graphic file (type png)
 <use updateScenario.png>
-Package pdftex.def Info: updateScenario.png  used on input line 208.
+Package pdftex.def Info: updateScenario.png  used on input line 185.
 (pdftex.def)             Requested size: 230.0pt x 196.08481pt.
  [4 <./medicalData.png> <./updateScenario.png>]
-Underfull \hbox (badness 3838) in paragraph at lines 283--284
+Underfull \hbox (badness 3838) in paragraph at lines 247--248
  \OT1/ptm/m/it/10 3) Pub-lic blockchain: [][] \OT1/ptm/m/n/10 Once de-ployed to
  the pub-lic
  []

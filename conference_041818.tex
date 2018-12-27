@@ -1,7 +1,6 @@
 %!TeX spellcheck = en_GB
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
-% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
@@ -11,26 +10,11 @@
 
 \begin{document}
 	
-	%refer the presentations/ notaability hints about writing a paper
-	
 	% describe the protocol for control access (blockchain part)
 	%  Related work
 	%	-   traditional architectures commenly employed in the IoT access:
 	%	   XACML, OAuth, UMA
 	%	   Dependency of a central entity
-	
-	% Our contribution should focus on the interoperability on the shared data, can be solved by BX view-update solution
-	% ???receipt??blockchain???????????????
-	%data?????
-	%dejima??virtual??????
-	
-	%???????????????????????data????
-	
-	%??access verification??? ??new authorization latency ?like call-by-need)
-	
-	% ??????node???????????????
-	% ??????????????????????????????
-	% ???????????????????????whitelist???????????????????????????????????
 
 \title{Distributed Authorized Medical Data Management}
 %\title{Authorized Updates to Distributed Medical Data}
@@ -71,28 +55,22 @@
 medical data, authorization, update, distributed
 \end{IEEEkeywords}
 
-
-% From MedRec: (our target problem)
-% We recognize  that not all provider records can or should be made available to  patients (i.e. psychotherapy notes, or physician intellectual property) [6], and thus MedRec does not presume to be an automatic content-management system for all of a Physician's output. ?????????shared data?local data?????????
-%MedRec does not claim to address the security of individual provider  databases where the record content is stored. ?=> shared ??????peers????? This must still be managed  by the local IT admin. Nor does MedRec attempt to solve the Digital  Rights Management problem. ?data provider can ??????? as view)
-
 \section{Introduction}
 
 Now a lot of medical data are digitalized so as to be stored and accessed conveniently. A medical record is produced after a patient go to see doctor and often resides on the hospital's database. Medical records contain highly sensitive information about patient privacy. HIPPA Privacy Rule  \cite{centers2004hipaa} in the U.S. regulates the use and disclosure of personally identifiable health information to protect patients' privacy. However, it hard to make sure that all medical institutes would follow these rules and they may expose patient privacy deliberately or for profit. Moreover, a patient might visit many hospitals and leave his records scattered \cite{zhang2016secure} in different places, which make it is hard for he to manage his records efficiently. So patient should be provided a platform to manage and review his historical medical data in case of exposure or being tampered. Better communication between patients and doctors can contribute to patient adherence \cite{zolnierek2009physician} and  improved health \cite{street2009does}. In addition to provide data to doctor, patients tend to share their medical data with health experts to help understand some statistics. Many researches has been done to study how medical specialists with different expertise collaborate with each other \cite{fitzpatrick2013review}.  Researchers can identify public hearth risks and then develop a better treatments by analyzing existing medical data \cite{office2015report}. As presented in \cite{chung2018using},  patients and experts can exchange information to develop better plans to satisfy individual routines. Sharing medical data under some constraints could benefit all relating stakeholders such as patients, researchers and doctors. 
-% %??????????????/??????????????????
-% %?????????????????????revise treatment plan
-% %???????????????????????????????????????
+% %patient understand and trace his medical records
+% %doctor revise treatment plan in terms of feedback
+% %researcher conduct census analyzation and provide better measures
 
 To be shared by multiple parties, shared medical data could reside in encrypted format on the trusted cloud. Only authorized stakeholders can access the shared data. Centralized access control might lead to single point of failure and become the bottleneck of sharing system. Some medical data sharing systems \cite{azaria2016medrec,fan2018medblock,xia2017bbds} are proposed to manage authentication based on blockchain\cite{nakamoto2008bitcoin} technology. Being a immutable shared ledger, blockchain can achieve consensus among distributed nodes via proof of work. Encoding the access control logic of medical data into smart contracts\cite{azaria2016medrec} or Chaincode \cite{dubovitskaya2017secure} can prevent unauthorized party to access medical data, which will guarantee data security. Anyone who want to access medical data should be verified permission from blockchain side and their access process will be recorded on blockchain.
 
 We realized that there are still another requirements on data sharing and state them as follow.
 
 Firstly, generally different stakeholders may have different focus on the same medical records. For example, doctors might be more concerned with the clinical data and researchers are interested in mechanism of action, whereas patients care more about the medicine dosage standard. To reduce the size of shared data to improve access efficiency and avoid additional data interference, the complete medical data (data source) might be split into lots of smaller data pieces (data views) which are shared by different parties. Each view can be regenerated from the source. Source and view should satisfy predefined consistency relationship. Different views from one source might have overlapped data. Moreover, each party will have a local complete data and different data pieces to share with others. In this way, shared data are distributed among sharing parties.
-%??????????????????
 
 Secondly, not only limited to access data, patients or doctors may want to update existing shared data. Although some works \cite{azaria2016medrec} claimed to allow updates on shared medical data, they did not propose any concrete scheme to implement updates and show how to synchronize all sharing parties to keep them still have same shared data after updates.
 
-%But how about read, add, delete shared data?
+%read, add, delete shared data belong to data management.
 %Since the shared data just reside in each peer's local database, read the shared data is easily promised.
 In this paper, we aim to solve authorized updates issues on distributed shared medical data as stated above. 
 %for updates distributed shared medical data
@@ -167,7 +145,6 @@ Shared data can exist in different peers, as shown in Fig. \ref{DB architecture}
 Each node will store its all data on a bigger database, such as D1, D2 and D3. Each shared data can be seen as a view which is produced by this bigger database named as source. For example, D12 can be made from D1 by using \emph{get}. If D12 is modified, then the D1 need to be reproduced from original D1 and D12 by using \emph{put}. We just write BX in researcher and patient side to express the pair of \emph{get} and \emph{put} functions.
 
 Note in our data distribution, shared data between any two parties will not be exposed to the third party, which can keep privacy between two parties in some degree. For example, any update on D12 and D21 can only be known by patient and researcher. However, after the change on D21 are reflected to D2, since D2 has been modified, D23 might need to be updated to a new version by using \emph{put} on D2.
-%??????????????????????????????????????BX??
 
 Fig. \ref{dataRepresentation} presents an example to show data distribution between patient Alice, doctor Bob and researcher Charlie. Each party have their own local base table, named as D1, D2, D3 respectively. For each table, there are some attributes such as medication name and address on D1. Table D13 (also D31) are shared by Alice and Bob and can be produced from either D1 or D3 by \emph{get}. Table D23 (also D32) are shared by Charlie and Bob and can be generated from D2 or D3 by \emph{get}.  Shared tables all stay in sharing peer's local databases. Note here the metadata collection table resides in the smart contract on blockchain. Each entry of metadata collection table corresponds to a shared table. For example, the entry for D13 or D31 declare that it is shared by Alice and Bob and Bob can update all attributes value but Alice can only change the clinical data. The "Latest Update Time" shows when the metadata was changed most recently. Moreover, "Authority to Change Permission allow Bob to change other peers (here just Alice)'s authority so that Alice can update dosage by change the value for "Dosage" attribute to "Bob, Alice".
 
@@ -217,19 +194,6 @@ Let's try to describe this work flow for updating shared data. After the update 
 
 Step 1 - 5 achieve the propagation of updates from one peer to another. Especially, step 6 check whether the images of D32 and D32 on D3 have some dependences. Step 7 - 11 have the same operational logic.
 
-
-%Suppose Alice, Bob, Charlie are sharing data Da. 
-%Alice update the local overall database and want to upload the update on the shared data. She will ask blockchain for permission. After the consensus, she should update the metadata of Da of smart contract on blockchain. Then smart contract will notify Bob and Charlie that the shared data has changed to a new version. Bob and Charlie will send request to Alice. Then Alice will apply \emph{get} to get the view (i.e., updated shared data) and send the Bob and  Charlie the new shared data. Once Bob or Charlie received the new Da, he will update the metadata on smart contract to show that he has upgrade the Da and then use \emph{put} to reflect the change on their own database. 
-%
-%%here like the orthogonal check on Ominzika sensei's picture
-%Next Bob will check whether the update on local big DB will produce a new version of shared data with David. If yes, he will do the same procedure like Alice did at first.
-%
-%Only Alice, Bob, Charlie received the new Da, then the update on Da is successful. Else rollback???
-%
-%*************
-%
-%
-%Still Bob need to whether he should update the dejima with David or others 
 %
 %Dependency 
 %Incremental update
