@@ -112,17 +112,11 @@ J.~N. Foster, M.~B. Greenwald, J.~T. Moore, B.~C. Pierce, and A.~Schmitt,
   to the view-update problem,'' \emph{ACM Transactions on Programming Languages
   and Systems (TOPLAS)}, vol.~29, no.~3, p.~17, 2007.
 
-\bibitem{pacheco2014monadic}
-H.~Pacheco, Z.~Hu, and S.~Fischer, ``Monadic combinators for putback style
-  bidirectional programming,'' in \emph{Proceedings of the acm sigplan 2014
-  workshop on partial evaluation and program manipulation}.\hskip 1em plus
-  0.5em minus 0.4em\relax ACM, 2014, pp. 39--50.
-
-\bibitem{pacheco2014biflux}
-H.~Pacheco, T.~Zan, and Z.~Hu, ``Biflux: A bidirectional functional update
-  language for xml,'' in \emph{Proceedings of the 16th International Symposium
-  on Principles and Practice of Declarative Programming}.\hskip 1em plus 0.5em
-  minus 0.4em\relax ACM, 2014, pp. 147--158.
+\bibitem{bohannon2008boomerang}
+A.~Bohannon, J.~N. Foster, B.~C. Pierce, A.~Pilkiewicz, and A.~Schmitt,
+  ``Boomerang: resourceful lenses for string data,'' in \emph{ACM SIGPLAN
+  Notices}, vol.~43, no.~1.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2008,
+  pp. 407--419.
 
 \bibitem{bigul}
 \BIBentryALTinterwordspacing
@@ -133,6 +127,11 @@ H.-S. Ko, T.~Zan, and Z.~Hu, ``{BiGUL}: A formally verified core language for
   2016, pp. 61--72. [Online]. Available:
   \url{http://doi.acm.org/10.1145/2847538.2847544}
 \BIBentrySTDinterwordspacing
+
+\bibitem{matsuda2018hobit}
+K.~Matsuda and M.~Wang, ``Hobit: Programming lenses without using lens
+  combinators,'' in \emph{European Symposium on Programming}.\hskip 1em plus
+  0.5em minus 0.4em\relax Springer, 2018, pp. 31--59.
 
 \bibitem{huet2004coq}
 G.~Huet, G.~Kahn, and C.~Paulin-Mohring, ``The coq proof assistant a

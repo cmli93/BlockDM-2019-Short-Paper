@@ -19,43 +19,43 @@ Warning--empty year in wood2014ethereum
 Done.
 You've used 30 entries,
             4087 wiz_defined-function locations,
-            989 strings with 13343 characters,
-and the built_in function-call counts, 20913 in all, are:
-= -- 1667
-> -- 528
-< -- 141
-+ -- 274
-- -- 102
-* -- 995
-:= -- 3179
+            990 strings with 13224 characters,
+and the built_in function-call counts, 21038 in all, are:
+= -- 1680
+> -- 532
+< -- 143
++ -- 276
+- -- 103
+* -- 1004
+:= -- 3200
 add.period$ -- 69
 call.type$ -- 30
 change.case$ -- 30
 chr.to.int$ -- 294
 cite$ -- 34
-duplicate$ -- 1577
-empty$ -- 1733
-format.name$ -- 127
-if$ -- 4868
+duplicate$ -- 1585
+empty$ -- 1737
+format.name$ -- 128
+if$ -- 4896
 int.to.chr$ -- 0
 int.to.str$ -- 30
-missing$ -- 293
+missing$ -- 296
 newline$ -- 115
 num.names$ -- 30
-pop$ -- 704
+pop$ -- 705
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1615
+skip$ -- 1627
 stack$ -- 0
 substring$ -- 754
-swap$ -- 1211
-text.length$ -- 43
+swap$ -- 1223
+text.length$ -- 45
 text.prefix$ -- 0
 top$ -- 5
 type$ -- 30
 warning$ -- 4
 while$ -- 93
 width$ -- 32
-write$ -- 303
+write$ -- 305
 (There were 4 warnings)
