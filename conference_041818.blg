@@ -17,45 +17,45 @@ Warning--empty journal in wood2014ethereum
 Warning--empty year in wood2014ethereum
 
 Done.
-You've used 29 entries,
+You've used 30 entries,
             4087 wiz_defined-function locations,
-            982 strings with 13048 characters,
-and the built_in function-call counts, 20232 in all, are:
-= -- 1608
-> -- 507
-< -- 138
-+ -- 264
-- -- 97
-* -- 960
-:= -- 3067
-add.period$ -- 67
-call.type$ -- 29
-change.case$ -- 29
+            989 strings with 13343 characters,
+and the built_in function-call counts, 20913 in all, are:
+= -- 1667
+> -- 528
+< -- 141
++ -- 274
+- -- 102
+* -- 995
+:= -- 3179
+add.period$ -- 69
+call.type$ -- 30
+change.case$ -- 30
 chr.to.int$ -- 294
-cite$ -- 33
-duplicate$ -- 1521
-empty$ -- 1684
-format.name$ -- 121
-if$ -- 4711
+cite$ -- 34
+duplicate$ -- 1577
+empty$ -- 1733
+format.name$ -- 127
+if$ -- 4868
 int.to.chr$ -- 0
-int.to.str$ -- 29
-missing$ -- 281
-newline$ -- 112
-num.names$ -- 29
-pop$ -- 679
+int.to.str$ -- 30
+missing$ -- 293
+newline$ -- 115
+num.names$ -- 30
+pop$ -- 704
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1561
+skip$ -- 1615
 stack$ -- 0
-substring$ -- 749
-swap$ -- 1167
-text.length$ -- 40
+substring$ -- 754
+swap$ -- 1211
+text.length$ -- 43
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 29
+type$ -- 30
 warning$ -- 4
-while$ -- 91
-width$ -- 31
-write$ -- 292
+while$ -- 93
+width$ -- 32
+write$ -- 303
 (There were 4 warnings)

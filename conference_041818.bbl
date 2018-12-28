@@ -106,6 +106,12 @@ K.~Czarnecki, J.~N. Foster, Z.~Hu, R.~L{\"a}mmel, A.~Sch{\"u}rr, and J.~F.
   Model Transformations}.\hskip 1em plus 0.5em minus 0.4em\relax Springer,
   2009, pp. 260--283.
 
+\bibitem{foster2007combinators}
+J.~N. Foster, M.~B. Greenwald, J.~T. Moore, B.~C. Pierce, and A.~Schmitt,
+  ``Combinators for bidirectional tree transformations: A linguistic approach
+  to the view-update problem,'' \emph{ACM Transactions on Programming Languages
+  and Systems (TOPLAS)}, vol.~29, no.~3, p.~17, 2007.
+
 \bibitem{pacheco2014monadic}
 H.~Pacheco, Z.~Hu, and S.~Fischer, ``Monadic combinators for putback style
   bidirectional programming,'' in \emph{Proceedings of the acm sigplan 2014
