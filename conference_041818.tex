@@ -161,7 +161,7 @@ The remainder are organized like this. Section \ref{preli} gives some preliminar
 Shared data\footnote{In our prototype, medical data are entered directly by users. Later we may consider using the data from wearable devices.} can exist in different peers, as shown in Fig. \ref{workflow}.  Suppose there are three users: patient Alice, researcher Charlie and doctor Bob. Each user have their own complete base table which is named as D1, D2, D3 respectively and different shared data with other users. For example, Bob and Charlie share some data which are stored in D32 on Bob side and D23 on Charlie side respectively. D32 and D23 should contain same contents, which means either one is updated and the other one need be modified to become identical with it again. Similarly, Alice and Bob share same contents that stored in D13 and D31 separately in their sides. Notably, the formats and contents of shared data are predefined by sharing peers. 
 
 \begin{figure}[htbp]
-	\centerline{\includegraphics[width=270pt,height=210pt]{updateScenario.pdf}}
+	\centerline{\includegraphics[width=270pt,height=220pt]{updateScenario.pdf}}
 	\caption{A workflow for updating data fields of shared data}
 	\label{workflow}
 \end{figure}

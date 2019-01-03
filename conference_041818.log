@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.14)  3 JAN 2019 14:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.14)  3 JAN 2019 15:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -518,15 +518,11 @@ Overfull \hbox (5.78172pt too wide) in paragraph at lines 140--150
  [] 
  []
 
-
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./updateScenario.pdf): PDF i
-nclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<updateScenario.pdf, id=15, 850.17625pt x 602.25pt>
+<updateScenario.pdf, id=15, 683.83115pt x 595.20029pt>
 File: updateScenario.pdf Graphic file (type pdf)
 <use updateScenario.pdf>
 Package pdftex.def Info: updateScenario.pdf  used on input line 164.
-(pdftex.def)             Requested size: 269.99931pt x 210.00035pt.
+(pdftex.def)             Requested size: 270.00078pt x 220.00269pt.
 <medicalData.pdf, id=16, 513.256pt x 599.76152pt>
 File: medicalData.pdf Graphic file (type pdf)
 <use medicalData.pdf>
@@ -541,7 +537,7 @@ Package pdftex.def Info: metadata.pdf  used on input line 202.
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./dataManage.pdf): PDF inclu
 sion: found PDF version <1.7>, but at most version <1.5> allowed
-<dataManage.pdf, id=62, 848.16875pt x 599.23875pt>
+<dataManage.pdf, id=68, 848.16875pt x 599.23875pt>
 File: dataManage.pdf Graphic file (type pdf)
 <use dataManage.pdf>
 Package pdftex.def Info: dataManage.pdf  used on input line 226.
@@ -584,10 +580,10 @@ mr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 r/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/t
 exlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/201
 8/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on conference_041818.pdf (7 pages, 326260 bytes).
+Output written on conference_041818.pdf (7 pages, 371703 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
- 96 compressed objects within 1 object stream
+ 129 PDF objects out of 1000 (max. 8388607)
+ 97 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
