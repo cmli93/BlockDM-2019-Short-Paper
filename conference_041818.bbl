@@ -51,10 +51,6 @@ G.~Fitzpatrick and G.~Ellingsen, ``A review of 25 years of cscw research in
 O.~of~the National Coordinator~for Health Information~Technology, ``Report to
   congress: Report on health information blocking,'' 2015.
 
-\bibitem{chung2018using}
-C.-F. Chung, ``Using personal informatics data in collaboration among people
-  with different expertise,'' Ph.D. dissertation, 2018.
-
 \bibitem{azaria2016medrec}
 A.~Azaria, A.~Ekblaw, T.~Vieira, and A.~Lippman, ``Medrec: Using blockchain for
   medical data access and permission management,'' in \emph{Open and Big Data
@@ -79,6 +75,12 @@ A.~Dubovitskaya, Z.~Xu, S.~Ryu, M.~Schumacher, and F.~Wang, ``Secure and
   trustable electronic medical records sharing using blockchain,'' in
   \emph{AMIA Annual Symposium Proceedings}, vol. 2017.\hskip 1em plus 0.5em
   minus 0.4em\relax American Medical Informatics Association, 2017, p. 650.
+
+\bibitem{delbanco2010open}
+T.~Delbanco, J.~Walker, J.~D. Darer, J.~G. Elmore, H.~J. Feldman, S.~G.
+  Leveille, J.~D. Ralston, S.~E. Ross, E.~Vodicka, and V.~D. Weber, ``Open
+  notes: doctors and patients signing on,'' \emph{Annals of internal medicine},
+  vol. 153, no.~2, pp. 121--125, 2010.
 
 \bibitem{hu2014validity}
 Z.~Hu, H.~Pacheco, and S.~Fischer, ``Validity checking of putback
@@ -132,6 +134,10 @@ H.-S. Ko, T.~Zan, and Z.~Hu, ``{BiGUL}: A formally verified core language for
 K.~Matsuda and M.~Wang, ``Hobit: Programming lenses without using lens
   combinators,'' in \emph{European Symposium on Programming}.\hskip 1em plus
   0.5em minus 0.4em\relax Springer, 2018, pp. 31--59.
+
+\bibitem{chung2018using}
+C.-F. Chung, ``Using personal informatics data in collaboration among people
+  with different expertise,'' Ph.D. dissertation, 2018.
 
 \bibitem{huet2004coq}
 G.~Huet, G.~Kahn, and C.~Paulin-Mohring, ``The coq proof assistant a

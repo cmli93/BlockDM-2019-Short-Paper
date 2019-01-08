@@ -11,51 +11,51 @@ Database file #1: ref.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
-Warning--missing school in chung2018using
 Warning--empty journal in nakamoto2008bitcoin
 Warning--empty journal in wood2014ethereum
 Warning--empty year in wood2014ethereum
+Warning--missing school in chung2018using
 
 Done.
-You've used 30 entries,
+You've used 31 entries,
             4087 wiz_defined-function locations,
-            990 strings with 13224 characters,
-and the built_in function-call counts, 21038 in all, are:
-= -- 1680
-> -- 532
-< -- 143
-+ -- 276
-- -- 103
-* -- 1004
-:= -- 3200
-add.period$ -- 69
-call.type$ -- 30
-change.case$ -- 30
-chr.to.int$ -- 294
-cite$ -- 34
-duplicate$ -- 1585
-empty$ -- 1737
-format.name$ -- 128
-if$ -- 4896
+            998 strings with 13544 characters,
+and the built_in function-call counts, 22214 in all, are:
+= -- 1769
+> -- 581
+< -- 154
++ -- 302
+- -- 113
+* -- 1065
+:= -- 3359
+add.period$ -- 71
+call.type$ -- 31
+change.case$ -- 31
+chr.to.int$ -- 318
+cite$ -- 35
+duplicate$ -- 1663
+empty$ -- 1815
+format.name$ -- 139
+if$ -- 5171
 int.to.chr$ -- 0
-int.to.str$ -- 30
-missing$ -- 296
-newline$ -- 115
-num.names$ -- 30
-pop$ -- 705
+int.to.str$ -- 31
+missing$ -- 313
+newline$ -- 118
+num.names$ -- 31
+pop$ -- 744
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1627
+skip$ -- 1714
 stack$ -- 0
-substring$ -- 754
-swap$ -- 1223
-text.length$ -- 45
+substring$ -- 811
+swap$ -- 1297
+text.length$ -- 48
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 30
+type$ -- 31
 warning$ -- 4
-while$ -- 93
-width$ -- 32
-write$ -- 305
+while$ -- 98
+width$ -- 33
+write$ -- 316
 (There were 4 warnings)
